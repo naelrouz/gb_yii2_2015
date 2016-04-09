@@ -5,12 +5,17 @@ $params = array_merge(
     require(__DIR__ . '/params.php'),
     require(__DIR__ . '/params-local.php')
 );
-
+Yii::setAlias('@com', '@frontend/modules');
 return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+    'modules' => [
+            'main' => [
+                'class' => 'app\modules\main\Module',
+             ],
+        ],
     'components' => [
         'user' => [
             'identityClass' => 'common\models\User',
@@ -36,6 +41,7 @@ return [
             ],
         ],
         */
+        
         'mail' => [
             'class'            => 'zyx\phpmailer\Mailer',
             'viewPath'         => '@common/mail',
