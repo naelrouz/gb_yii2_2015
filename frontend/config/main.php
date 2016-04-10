@@ -30,6 +30,7 @@ return [
                 ],
             ],
         ],
+      
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
@@ -56,6 +57,7 @@ return [
                 'password'   => 'mYsmTpPassword',
             ],
         ],
+        'common' => 'frontend\components\Common'
     ],
     'params' => $params,
 ];

@@ -11,13 +11,20 @@ use yii\base\Component;
  * @author nael
  */
 class Common extends Component{
-    public static function sendMail($email,$subject,$body,$name='') {
-        \Yii::$app->mail->compose()
-                ->setFrom([\Yii::$app->params['supportEmail'] => \Yii::$app->name])
-                ->setTo([$email => $email])
-                ->setSubject($subject)
-                ->setTextBody($body)
-                ->send();
-        
+    
+    const EVENT_NOT = 'notify admin';
+
+
+    public  function sendMail($email,$subject,$body,$name='') {
+//        \Yii::$app->mail->compose()
+//                ->setFrom([\Yii::$app->params['supportEmail'] => \Yii::$app->name])
+//                ->setTo([$email => $email])
+//                ->setSubject($subject)
+//                ->setTextBody($body)
+//                ->send();
+        $this->trigger(self::EVENT_NOT); // тригер события сра батывает при вызове метода
+    }
+    public function notfAdmi($event) { // это обработчик
+        print 'Сработало событие';
     }
 }
